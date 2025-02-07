@@ -12,7 +12,7 @@ WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN yarn config set registry https://registry.npmmirror.com/
-RUN yarn install && yarn build --production --ignore-scripts --prefer-offline
+RUN yarn install --ignore-scripts --prefer-offline && yarn build  
 
 # Production image, copy all the files and run next
 FROM node:alpine AS runner
